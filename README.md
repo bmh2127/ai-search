@@ -13,6 +13,7 @@ A demonstration of advanced search capabilities using TimescaleDB with pgai, sho
 
 - Docker and Docker Compose
 - Python 3.12 or higher
+- uv package manager (install with `curl -LsSf https://astral.sh/uv/install.sh | sh`)
 - OpenAI API key
 - Anthropic API key (optional)
 
@@ -37,16 +38,25 @@ PORT=8080
 docker compose up -d
 ```
 
-4. Install Python dependencies:
+4. Install Python dependencies using uv:
 ```bash
-pip install -r requirements.txt
+uv venv
+source .venv/bin/activate  # On Unix/macOS
+# or
+.venv\Scripts\activate  # On Windows
+uv pip install -r requirements.txt
 ```
 
 ## Running the Application
 
-Start the development server:
+The project includes a development server script that uses uv. Start the server with:
 ```bash
 ./devserver.sh
+```
+
+Or manually run:
+```bash
+uv run python -m flask --app main run -p $PORT --debug
 ```
 
 The application will be available at `http://localhost:8080`
@@ -72,4 +82,64 @@ The web interface provides two search options:
 - python-dotenv: Environment variable management
 - OpenAI: API client for embeddings
 - TimescaleDB: Time-series database with pgai extension
+
+## License
+
+
+## Project Extensions
+
+Here are several ways you can extend and enhance this project:
+
+### 1. Enhanced Search Capabilities
+- Add support for multiple embedding models (e.g., Cohere, HuggingFace)
+- Implement hybrid search combining both full-text and semantic search
+- Add filters for date ranges, categories, or other metadata
+- Implement search result ranking and scoring visualization
+
+### 2. User Interface Improvements
+- Add a modern frontend framework (React, Vue, etc.)
+- Implement real-time search with debouncing
+- Add search result pagination
+- Include search history and saved searches
+- Add result highlighting for matched terms
+
+### 3. Data Management
+- Add a data ingestion pipeline for new articles
+- Implement data preprocessing and cleaning
+- Add support for different document types (PDFs, Word docs, etc.)
+- Create a data validation system
+
+### 4. Performance Optimizations
+- Implement caching for frequent searches
+- Add database indexing strategies
+- Optimize embedding storage and retrieval
+- Add query performance monitoring
+
+### 5. Advanced Features
+- Add user authentication and personalized search
+- Implement search analytics and usage tracking
+- Add export functionality for search results
+- Create an API documentation using Swagger/OpenAPI
+- Add support for batch processing of searches
+
+### 6. Monitoring and Maintenance
+- Add logging and monitoring
+- Implement automated testing
+- Create a backup and recovery system
+- Add performance metrics dashboard
+
+### 7. Integration Possibilities
+- Add support for external data sources
+- Implement webhook notifications for new results
+- Create a browser extension for quick searches
+- Add integration with popular note-taking apps
+
+### 8. AI Enhancements
+- Implement query understanding and refinement
+- Add automatic query expansion
+- Create a recommendation system based on search history
+- Add support for multi-language search
+
+Choose the extensions that best align with your project goals and requirements. Each of these areas can be implemented incrementally to build a more robust and feature-rich search system.
+
 
