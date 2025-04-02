@@ -73,6 +73,3 @@ The web interface provides two search options:
 - OpenAI: API client for embeddings
 - TimescaleDB: Time-series database with pgai extension
 
-## License
-
-[Add your license information here]
