@@ -47,6 +47,58 @@ source .venv/bin/activate  # On Unix/macOS
 uv pip install -r requirements.txt
 ```
 
+## Version Control
+
+This project uses Git for version control. Here are some common commands and workflows:
+
+### Basic Git Commands
+```bash
+# Clone the repository
+git clone <your-repo-url>
+
+# Create a new branch for your changes
+git checkout -b feature/your-feature-name
+
+# Stage your changes
+git add .
+
+# Commit your changes
+git commit -m "Your commit message"
+
+# Push your changes
+git push origin feature/your-feature-name
+```
+
+### Handling Merge Conflicts
+If you encounter merge conflicts when pulling changes:
+
+1. First, stash your local changes:
+```bash
+git stash
+```
+
+2. Pull the latest changes:
+```bash
+git pull
+```
+
+3. Reapply your changes:
+```bash
+git stash pop
+```
+
+4. Resolve any conflicts manually, then:
+```bash
+git add .
+git commit -m "Resolved merge conflicts"
+```
+
+### Best Practices
+- Always create a new branch for feature development
+- Keep commits atomic and well-documented
+- Pull latest changes before starting new work
+- Test your changes locally before pushing
+
 ## Running the Application
 
 The project includes a development server script that uses uv. Start the server with:
