@@ -72,32 +72,60 @@ git push origin feature/your-feature-name
 ### Handling Merge Conflicts
 If you encounter merge conflicts when pulling changes:
 
-1. First, stash your local changes:
+1. First, check your current status:
+```bash
+git status
+```
+
+2. Save your current work:
 ```bash
 git stash
 ```
 
-2. Pull the latest changes:
+3. Pull the latest changes:
 ```bash
-git pull
+git pull origin main
 ```
 
-3. Reapply your changes:
+4. If the pull fails with "Not possible to fast-forward", you can try:
+```bash
+# Option 1: Merge with rebase
+git pull --rebase origin main
+
+# Option 2: Force pull (use with caution)
+git fetch origin
+git reset --hard origin/main
+```
+
+5. Reapply your changes:
 ```bash
 git stash pop
 ```
 
-4. Resolve any conflicts manually, then:
+6. Resolve any conflicts manually, then:
 ```bash
 git add .
 git commit -m "Resolved merge conflicts"
 ```
+
+7. Push your changes:
+```bash
+git push origin main
+```
+
+⚠️ **Important Notes**:
+- Never use `git push --force` on the main branch unless absolutely necessary
+- Always communicate with team members before force pushing
+- Consider creating a feature branch instead of working directly on main
+- If you're working alone and sure about your changes, you can use `git push --force-with-lease` instead of `--force`
 
 ### Best Practices
 - Always create a new branch for feature development
 - Keep commits atomic and well-documented
 - Pull latest changes before starting new work
 - Test your changes locally before pushing
+- Use feature branches and pull requests for major changes
+- Regularly sync your local branch with the remote
 
 ## Running the Application
 
